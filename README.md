@@ -47,14 +47,15 @@ Access the application in your browser:
 - After successful login, you can access the home page http://localhost:8080/.
 
 ## Demo
-- Login page : 
-
-![login_page](screenshots/login.png)
 
 - Registration page : 
 
 ![registration_page](screenshots/registration.png)
 
-- Home page :
+- Login page :
+
+![login_page](screenshots/login.png)
+
+- Home page after logged in:
 
 ![homepage](screenshots/homepage.png)
