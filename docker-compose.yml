@@ -1,0 +1,33 @@
+version: '3'
+services:
+  mysql-container:
+    image: mysql:latest
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: demo
+    ports:
+      - "3306:3306"
+    networks:
+      - login-network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+
+  spring-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - login-network
+    depends_on:
+      mysql-container:
+        condition: service_healthy
+
+networks:
+  login-network:
+    driver: bridge
